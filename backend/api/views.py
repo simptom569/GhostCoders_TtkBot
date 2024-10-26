@@ -7,8 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 
-from  .serializers import UserSerializer, EmployeeSerializer
-from .models import User, Employee
+from  .serializers import UserSerializer, EmployeeSerializer, RequestSerializer
+from .models import User, Employee, Request
 
 
 class IsAdminUser(permissions.BasePermission):
@@ -31,7 +31,7 @@ class LoginView(APIView):
 
 class RegistrationView(generics.CreateAPIView):
     serializer_class = EmployeeSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [IsAdminUser]
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -44,3 +44,9 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [IsAdminUser]
+
+
+class RequestViewSet(viewsets.ModelViewSet):
+    queryset = Request.objects.all()
+    serializer_class = RequestSerializer
+    permission_classes = [permissions.IsAuthenticated]

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, Employee
+from .models import User, Employee, Request
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,3 +16,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = ('id', 'email', 'password', 'is_admin')
+
+
+class RequestSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Request
+        fields = ('id', 'user_id', 'request', 'ready')
