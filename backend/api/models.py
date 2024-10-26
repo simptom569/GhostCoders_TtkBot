@@ -33,7 +33,7 @@ class User(models.Model):
 class Employee(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True, editable=False)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=64)
+    password = models.CharField(max_length=128)
     is_admin = models.BooleanField()
     
     objects = EmployeeManager()
