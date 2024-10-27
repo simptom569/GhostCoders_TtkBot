@@ -1,1 +1,2 @@
 token = '8017457595:AAED8aVWxVUYXfUa43Qr1tYNeUErXrXZOEY'
+token_auth = '126b93b9aa0d6e9dd42328eb02e8d583fd0414c2'
