@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tceav^+k4e16amro20r#!)4jh0e5c#i&8%s89yv_mcjmqio_(i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'rest_framework',
+    'corsheaders',
     'rest_framework.authtoken',
     
     'api',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -136,3 +138,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.list.ru'  # SMTP сервер для list.ru
+EMAIL_PORT = 587  # Обычно 587 для TLS
+EMAIL_USE_TLS = True  # Включить TLS
+EMAIL_HOST_USER = 'test_work_mail@list.ru'
+EMAIL_HOST_PASSWORD = 'ywLpmzfmQ08kHN6Te9bW'  # Внешний пароль
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
